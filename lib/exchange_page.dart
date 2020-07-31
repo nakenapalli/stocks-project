@@ -19,10 +19,41 @@ class _ExchangePageState extends State<ExchangePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(exchange.name),
+        title: Row(
+          children: <Widget>[
+            Text(exchange.name),
+            SizedBox(width: 8.0),
+            Image.network(exchange.image),
+          ],
+        ),
+        titleSpacing: 75.0,
       ),
-      body: Image(
-        image: NetworkImage(exchange.image),
+      body: Container(
+        margin: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Text("Established: "),
+                Text(
+                  (exchange.year).toString(),
+                  textScaleFactor: 1.3,
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Text("Located in: "),
+                Text(
+                  exchange.country,
+                  textScaleFactor: 1.3,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
